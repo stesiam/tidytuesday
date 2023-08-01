@@ -12,8 +12,6 @@ library(sysfonts)
 
 library(readr)
 
-font_add_google(name = "Lilita One", family = "title", db_cache = F)
-font_add_google(name = "Ysabeau Office", family = "subtitle", db_cache = F)
 # Import dataset
 
 numbats <- read_csv("2023/w10/numbats.csv")
@@ -40,7 +38,7 @@ map = ggplot() +
   ) +
   theme_void() +
   theme(
-    plot.title = element_markdown(family = "EB Garamond", size = 15),
+    plot.title = element_markdown(family = "Amiri", size = 15),
     plot.subtitle = element_markdown(family = "EB Garamond"),
     plot.caption = element_markdown(family = "EB Garamond"),
     legend.position = "none"
@@ -50,4 +48,6 @@ ggsave(
   filename = "2023/w10/w10-2023-tt.png",
   plot = map,
   device = "png",
-  bg = "white")
+  bg = "white",
+  height = 4,
+  width = 4.5)
