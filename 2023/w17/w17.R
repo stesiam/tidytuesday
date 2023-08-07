@@ -1,11 +1,13 @@
 library(readr)
 library(dplyr)
+library(tidyr)
 
 library(glue)
 
 library(ggplot2)
 library(ggtext)
 library(extrafont)
+
 
 
 winners <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-25/winners.csv')
