@@ -51,7 +51,9 @@ plot = eggproduction %>%
                     color = prod_process, label = prod_process), size = 4, 
                     fontface = 2, hjust = 0.23, vjust = -0.3, lwd=1) +
   geom_vline(xintercept= lubridate::ym("2020-01"), linetype="dashed", color = "red") +
-  geom_text(aes(x=lubridate::ym("2020-02"), label="First confirmed COVID-19 case in US", y=4), angle=270) +
+  geom_text(aes(x=lubridate::ym("2020-02"), label="First confirmed COVID-19 case in US", y=4), 
+            angle=270,
+            family = "EB Garamond") +
   geom_text(mapping = aes(x = observed_month, 
                           y = round(n_eggs/10^9, digits = 1), 
                           label = ifelse(max(lubridate::ym(observed_month)) == lubridate::ym(observed_month), round(n_eggs/10^9, digits = 2), ""))) +
