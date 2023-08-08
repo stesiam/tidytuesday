@@ -76,7 +76,7 @@ plot = ggplot(data, aes(x="", y=pct, fill=months_lack_food)) +
                               face = "bold",
                               margin = margin(t=5,b=5), 
                               size = 15),
-    plot.background = element_rect(fill = "black"),
+    plot.background = element_rect(fill = "black", linetype = "blank"),
     panel.background = element_rect(fill = "black")
 )
 
