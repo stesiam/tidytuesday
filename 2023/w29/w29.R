@@ -28,7 +28,7 @@ subtitle = glue("It is observed a big difference between GPT-3 and GPT-4 in temr
                 less possible to be detected by an AI detector<br>scanner. Also,
                 <b>OriginalityAI</b> seems to have the higher accuracy among other
                 detectors.")
-caption = "stesiam, 2023"
+caption = "Tidy Tuesday, week 29<br>stesiam, 2023"
 
 labels = c(
   OriginalityAI = "<img src='2023/w29/images/originalityai.png' width='10'/> OriginalityAI",
@@ -113,6 +113,7 @@ plot = (p1 + p2)  +
 ggsave(
   filename = "2023/w29/w29-2023-tt.png",
   plot = plot,
-  device = "png")
+  device = "png", height = 3.9, width = 6.68)
 
 #6.68 * 3.91 dimensions
+## 2003 × 1171 pixels

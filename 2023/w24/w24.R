@@ -35,7 +35,7 @@ subtitle = "Based on SAFI survey, the three observed villages have a big portion
 of <br>theιr population which have reported food insufficiency to feed the <br>household.
 The problem is greater in <b>God</b> village, as there is a <br>staggering <span style = 'color: red; font-weight:bold;'>90%</span> of
 interviewees who declares food insecurity concerns."
-caption = "stesiam, 2023"
+caption = "Tidy Tuesday, week 24<br>stesiam, 2023"
 
 plot = ggplot(data, aes(x="", y=pct, fill=months_lack_food)) +
   geom_bar(stat="identity", width=1) +
@@ -83,5 +83,5 @@ plot = ggplot(data, aes(x="", y=pct, fill=months_lack_food)) +
 ggsave(
   filename = "2023/w24/w24-2023-tt.png",
   plot = plot,
-  device = "png")
+  device = "png", height = 5)
 
