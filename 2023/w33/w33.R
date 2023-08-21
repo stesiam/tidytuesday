@@ -3,9 +3,8 @@ library(dplyr)
 
 library(ggplot2)
 library(ggtext)
-library(showtext)
-library(sysfonts)
 
+library(extrafont) ## Better alt / use on next viz -> showtext + sysfonts
 library(glue)
 
 library(tidymodels)
