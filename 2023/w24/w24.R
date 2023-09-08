@@ -83,5 +83,6 @@ plot = ggplot(data, aes(x="", y=pct, fill=months_lack_food)) +
 ggsave(
   filename = "2023/w24/w24-2023-tt.png",
   plot = plot,
-  device = "png", height = 5)
+  device = "png", 
+  height = 4)
 
