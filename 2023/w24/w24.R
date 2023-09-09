@@ -57,25 +57,26 @@ plot = ggplot(data, aes(x="", y=pct, fill=months_lack_food)) +
   ) +
   scale_fill_manual(values  = c("No" = "#00bfc4", 
                                 "Yes" = "#F8766D")) +
-  theme_bw() +
+  theme_classic(base_size = 10) +
   theme(
-    plot.title = element_markdown(family = "Amiri", size = 25, hjust = 0.5, color = "white"),
-    plot.subtitle = element_markdown(family = "EB Garamond", color = "white", hjust = 0.5),
-    plot.caption = element_markdown(family = "EB Garamond", size= 12, color = "white"),
+    plot.title = element_markdown(family = "Amiri", hjust = 0.5, color = "white", size = 16,
+                                  margin = margin(t = 5, b = 10)),
+    plot.subtitle = element_markdown(family = "EB Garamond", color = "white", hjust = 0.5, size = 13),
+    plot.caption = element_markdown(family = "EB Garamond", color = "white"),
     axis.text = element_blank(),
     axis.ticks = element_blank(),
     panel.grid  = element_blank(),
     legend.position = "top",
     legend.title = element_text(face = "bold", color = "white"),
-    legend.text = element_text(color = "white", size = 12),
+    legend.text = element_text(color = "white"),
     text = element_text(family = "EB Garamond"),
     legend.box.margin = margin(t=1,b=1),
     legend.background = element_rect(fill = "black"),
     strip.background = element_rect(fill = "red3"),
     strip.text = element_text(color = "white",
                               face = "bold",
-                              margin = margin(t=5,b=5), 
-                              size = 15),
+                              margin = margin(t=5,b=5),
+                              size = 13),
     plot.background = element_rect(fill = "black", linetype = "blank"),
     panel.background = element_rect(fill = "black")
 )
@@ -84,5 +85,7 @@ ggsave(
   filename = "2023/w24/w24-2023-tt.png",
   plot = plot,
   device = "png", 
-  height = 4)
+  height = 4,
+  width = 6
+  )
 
