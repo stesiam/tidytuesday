@@ -85,7 +85,7 @@ ggsave(
   filename = "2023/w24/w24-2023-tt.png",
   plot = plot,
   device = "png", 
-  height = 4,
-  width = 6
-  )
+  height = 3.9, 
+  width = 6.68
+)
 
