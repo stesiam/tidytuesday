@@ -71,7 +71,7 @@ plot = ggplot(data = freq) +
     x = ""
   ) +
   theme_classic(
-    base_size = 10,
+    base_size = 12,
     base_family = "eb"
   ) +
   theme(
@@ -83,7 +83,7 @@ plot = ggplot(data = freq) +
     plot.background = element_rect(fill = "white"),
     panel.background = element_rect(fill = "white"),
     plot.subtitle = element_markdown(family = "eb", lineheight = 1.2,
-                                     margin = margin(r = 10, l = 10, t = 5)),
+                                     margin = margin(r = 10, l = 10, t = 5, b = 5)),
     plot.caption = element_markdown(family = "eb", lineheight = 1.2)
   )
 
@@ -93,6 +93,7 @@ ggsave(
   filename = "2023/w38/w38-2023-tt.png",
   plot = plot,
   device = "png",
-  height = 4
+  height = 4,
+  width = 6
 )
 

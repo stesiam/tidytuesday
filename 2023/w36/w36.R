@@ -47,9 +47,9 @@ find_max = demographics %>%
   )
 
 title = glue("Employees' participation in Unions")
-subtitle = glue("In the early 70's the participation in unions was similar in private and public sector.<br>
-                (~ 1 out of 4 empployees). Since then, the union participation in <span style = 'color: dodgerblue'>public sector</span> has<br> significantly increased. 
-                On the contrary, <span style = 'color: red'>private sector</span> employees' participation<br> is decreasing year by year,
+subtitle = glue("In the early 70's the participation in unions was similar in private and public<br> sector.
+                (~ 1 out of 4 empployees). Since then, the union participation in <span style = 'color: dodgerblue'>public <br>sector</span> has significantly increased. 
+                On the contrary, <span style = 'color: red'>private sector</span> employees' <br>participation is decreasing year by year,
                 reaching <span style = 'color: red'>{paste0(round(last_year_private, digits = 2), '%')} </span> in 2022.")
 caption = "Tidy Tuesday, week 36<br><span style='font-family:fb; font-size:10px;'  >&#xf09b;</span> <b>stesiam</b>, 2023"
 
@@ -104,5 +104,7 @@ ggsave(
   filename = "2023/w36/w36-2023-tt.png",
   plot = plot,
   device = "png",
-  height = 4
+  height = 4,
+  width = 6
 )
+
