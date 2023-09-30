@@ -44,6 +44,7 @@ freq = cran_20230905$`Date/Publication` %>%
   as.data.frame() %>%
   setNames(c("Year", "Packages"))
 
+
 title = glue("Development of &nbsp;&nbsp; <span style='font-family:fb; color:  #1a8cff;'  >&#xf4f7;</span> &nbsp;&nbsp; Packages")
 subtitle = glue("<b>CRAN</b>, the Comprehensive R Archive Network, is the leading repository
                   for enhancing<br> R code with a total of <span style= 'color: red; font-weight:bold; font-family:lo; font-size: 10px'>{length(cran_20230905$Package)}</span> packages. 
@@ -61,6 +62,8 @@ plot = ggplot(data = freq) +
   geom_line(aes(x = Year, y = Packages, group = "none"), linewidth = 1.1) +
   geom_text(aes(x = Year, y = Packages + 480, label = ifelse(Year %in% seq(2008,2023,3), Packages, "")),
             family = "lo", fontface = "bold", size = 4, color = "dodgerblue2") +
+  geom_area(aes(x = Year, y = Packages, group = "none"),
+            fill = "green", alpha = 0.2) +
   geom_point(aes(x = Year, y = Packages)) +
   geom_richtext(aes(x = "2016", y = 5000, label = label), 
                 fill = NA, label.color = NA) +
@@ -96,4 +99,3 @@ ggsave(
   height = 4,
   width = 6
 )
-
