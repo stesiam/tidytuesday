@@ -8,8 +8,7 @@ library(glue)
 library(showtext)
 library(sysfonts)
 
-LIBRARY(usmap)
-
+library(usmap)
 ## Load fonts
 
 sysfonts::font_add_google("Creepster", "title")
@@ -29,12 +28,16 @@ haunted_places <- readr::read_csv('https://raw.githubusercontent.com/rfordatasci
 
 freq_states = haunted_places %>%
   group_by(state) %>%
-  summarise(n = n())
+  summarise(n = n()) %>%
+  mutate(pct = round(n/sum(n)*100, digits = 2)) %>%
+  arrange(-n)
+
+
 
 title = glue("<b><span style='font-family:fs; color:  white;'  >&#xf6e2;</span> Haunted States in US <span style='font-family:fs; color:  white;'  >&#xf6e2;</span></b>")
-subtitle = paste0("In total ", nrow(haunted_places), " numbats have been observed in Australia. <br>
-                      The vast majority of those are <span style = 'color:red;'>Myrmecobius fasciatus</span>
-                      <br> and just 12 are <span style = 'color:dodgerblue;'>Myrmecobius fasciatus rufus</span>.")
+subtitle = paste0("In total ", nrow(haunted_places), " haunted places have been observed in US. <br>
+                      The states with the most ones <br>are <span style = 'color:orange;'>California</span>, <span style = 'color:orange;'>Texas</span> 
+                      and <span style = 'color:orange;'>Pennsylvania.</span>.")
 caption = "Tidy Tuesday, week 41<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023"
 
 map = plot_usmap(data = freq_states, values = "n", labels=FALSE) +
@@ -51,7 +54,7 @@ map = plot_usmap(data = freq_states, values = "n", labels=FALSE) +
     plot.title.position = "plot",
     plot.subtitle = element_markdown(family = "title", color = "white", hjust = 0.5, size = 15),
     plot.caption = element_markdown(family = "title", color = "white",
-                                    margin = margin(r = 5), lineheight = 1, size = 12),
+                                    margin = margin(r = 10, b = 7), lineheight = 1, size = 12),
     plot.caption.position = "plot",
     plot.background = element_rect(fill = "black"),
     panel.background = element_rect(fill = "black"),text = element_text(size = 2),
@@ -67,3 +70,4 @@ ggsave(
   device = "png",
   height = 4,
   width = 6)
+
