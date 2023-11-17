@@ -37,12 +37,12 @@ l = house %>%
   summarise(s = sum(Amount))
 
 
-title = glue("Diwali Sales Data")
+title = glue("Diwali Sales Data per Age Group")
 subtitle = glue("<b>Diwali</b>, (also called Deepavali) is the Hindu festival of lights with its variations also celebrated
                 in <br> other Indian religions. The celebrations generally last five or six days. In this week's dataset <br> we observe that the age group 26-35 
                 has spent the most money while underage individuals<br>spent the least.
                 In total, the sales sum up to <span style='font-weight: bold; font-family:gpb;'>{round(sum(l$s)/1000000, 1)} millions rupees</span>.")
-caption = glue("<span style='font-family:title; color:grey;'><span style='font-weight: bold;'>NOTE:</span> Each </span> <span style='font-family:fs; color:green;'>&#xf53a;</span> <span style='font-family:title; color:grey;'>corresponds to 1 million (1,000,000) rupees</span><br> Tidy Tuesday, week 46<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
+caption = glue("<span style='font-family:title; color:grey;'><span style='font-weight: bold;'>NOTE:</span> Each </span> <span style='font-family:fs; color:green;'>&#xf53a;</span> <span style='font-family:title; color:grey;'>corresponds to 1 million (1,000,000) rupees ₹ (≈ 11,000 €)</span><br> Tidy Tuesday, week 46<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
 
 
 
@@ -63,22 +63,24 @@ DDEEFF
 
 waf$la = "money-bill-wave"
 
+
 p1 = ggplot(waf, aes(fill = states, values = n/1000000, label = la))+
   facet_grid(~states) +
-  geom_pictogram( n_rows = 5, size = 2, color = "green4", family = "fs") +
+  geom_pictogram( n_rows = 5, size = 2, color = rgb(red = 0, green = 250, blue = 0, alpha = 120, maxColorValue = 255), family = "fs") +
   scale_label_pictogram(
     name = NULL,
     values = c(
       "money-bill-wave" = "money-bill-wave"
     )
   ) +
+  geom_text(aes(x = 5, y = 3, family = "gpb", group = states),label =paste0(round(l$s/1000000, 1)," mil. ₹"), color = "white", size = 2.5) +
   ggh4x::facet_manual(~states,design = design) +
   theme_minimal() +
   labs(
     title = title,
     subtitle = subtitle,
     caption = caption
-  )  +
+  ) +
   theme_classic(base_size = 10,
                 base_family = "gp") +
   theme_enhance_waffle() +
@@ -87,7 +89,8 @@ p1 = ggplot(waf, aes(fill = states, values = n/1000000, label = la))+
     axis.ticks.y = element_blank(),
     plot.title = element_markdown(family = "title", color ="#f9e099", face = "bold", fill = "black",margin = margin(t = 5, b = 5), hjust = 0.5),
     plot.title.position = "plot",
-    plot.subtitle = element_markdown(family = "gp",
+    text = element_text(color = "white", family = "eb"),
+    plot.subtitle = element_markdown(family = "gpr",
                                      color = "white",
                                      margin = margin(t = 5, b = 10, l = 10, r = 10),
                                      fill = "black",
