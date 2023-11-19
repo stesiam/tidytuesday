@@ -37,7 +37,7 @@ l = house %>%
   summarise(s = sum(Amount))
 
 
-title = glue("<b>Diwali Sales Data per Age Group</b>")
+title = glue("<span style='font-family:fs; color:purple;'  >&#xf290;</span> <b>Diwali Sales Data per Age Group</b> <span style='font-family:fs; color:purple;'  >&#xf290;</span>")
 subtitle = glue("<b>Diwali</b>, (also called Deepavali) is the Hindu festival of lights with its variations also celebrated
                 in <br> other Indian religions. The celebrations generally last five or six days. In this week's dataset <br> we observe that the age group 26-35 
                 has spent the most money while underage individuals<br>spent the least.
@@ -62,6 +62,7 @@ DDEEFF
 )
 
 waf$la = "money-bill-wave"
+
 
 
 p1 = ggplot(waf, aes(fill = states, values = n/1000000, label = la))+
