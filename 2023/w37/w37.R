@@ -19,7 +19,7 @@ library(rnaturalearthdata)
 sysfonts::font_add_google("EB Garamond", "eb")
 sysfonts::font_add_google("Pacifico", "pc")
 sysfonts::font_add_google("Lilita One", "lo")
-sysfonts::font_add_google("Cabin Condensed", "cc")
+sysfonts::font_add_google("Oswald", "caption")
 sysfonts::font_add('fb', '/home/stelios/Downloads/fontawesome-free-6.4.0-desktop/otfs/Font Awesome 6 Brands-Regular-400.otf')
 sysfonts::font_add('fs', '/home/stelios/Downloads/fontawesome-free-6.4.0-desktop/otfs/Font Awesome 6 Free-Solid-900.otf')
 
@@ -78,7 +78,7 @@ plot = ggplot(data = c) +
     plot.title = element_markdown(family = "lo", hjust = 0.5, margin = margin(t =5, b = 5)),
     plot.title.position = "plot",
     plot.subtitle = element_markdown(family = "eb", margin = margin(r = 5, l = 5)),
-    plot.caption = element_markdown(family = "cc", margin = margin(b = 5), lineheight = 1.2),
+    plot.caption = element_markdown(family = "caption", margin = margin(b = 5), lineheight = 1.2, size = 7),
     plot.background = element_rect(fill = "#e6ffff", colour = "#e6ffff"),
     panel.background = element_rect(fill = "#e6ffff", colour = "#e6ffff")
   )
