@@ -19,6 +19,7 @@ library(rnaturalearthdata)
 sysfonts::font_add_google("EB Garamond", "eb")
 sysfonts::font_add_google("Pacifico", "pc")
 sysfonts::font_add_google("Lilita One", "lo")
+sysfonts::font_add_google("Cabin Condensed", "cc")
 sysfonts::font_add('fb', '/home/stelios/Downloads/fontawesome-free-6.4.0-desktop/otfs/Font Awesome 6 Brands-Regular-400.otf')
 sysfonts::font_add('fs', '/home/stelios/Downloads/fontawesome-free-6.4.0-desktop/otfs/Font Awesome 6 Free-Solid-900.otf')
 
@@ -38,13 +39,13 @@ global_economic_activity <- readr::read_csv('https://raw.githubusercontent.com/r
 
 
 
-title = glue("Sleep <span style='font-family:fs; color: black;'  >&#xf236;</span> <span style='font-family:lo; color: red;'> Uncertainty</span>")
+title = glue("<span style='font-family:fs; color: black;'>&#xf236;</span> <span style='font-family:lo; color: black;'> Sleep </span> <span style='font-family:lo; color: red;'>Uncertainty </span> </span> <span style='font-family:fs; color: black;'  >&#xf236;</span>")
 subtitle = glue("Sleep is one of the most important parts of daytime as it consists one third <br>
                  of it. The less uncertainty in <b>sleep time</b> is in <span style='font-family:lo; color: #009933;'>North America</span>, <span style='font-family:lo; color: #009933;'>EU</span>,  <span style='font-family:lo; color: #009933;'>India</span>, <br>
 <span style='font-family:lo; color: #009933;'>Australia</span> and  <span style='font-family:lo; color: #009933;'>New Zealand</span>. 
                  On the other hand, the less safe are <br><span style='font-family:lo; color: red;'>South East Asia</span> and 
                  <span style='font-family:lo; color: red;'>Oceania</span> states <br> .")
-caption = "Tidy Tuesday, week 37<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023"
+caption = "<b>SOURCE:</b> The Human Chronome Project<br>Tidy Tuesday, week 37<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023"
 
 world <- ne_countries(scale = "medium", returnclass = "sf") %>%
   filter(admin != "Antarctica")
@@ -68,18 +69,18 @@ plot = ggplot(data = c) +
     subtitle = subtitle,
     caption = caption
   ) +
-  theme_classic(
-    base_size = 13,
+  theme_void(
+    base_size = 14,
     base_family = "eb"
   ) + 
   theme(
     legend.position = "none",
-    plot.title = element_markdown(family = "lo", hjust = 0.5),
+    plot.title = element_markdown(family = "lo", hjust = 0.5, margin = margin(t =5, b = 5)),
     plot.title.position = "plot",
-    plot.subtitle = element_markdown(family = "eb"),
-    plot.caption = element_markdown(family = "eb"),
-    plot.background = element_rect(fill = "#e6ffff"),
-    panel.background = element_rect(fill = "#e6ffff")
+    plot.subtitle = element_markdown(family = "eb", margin = margin(r = 5, l = 5)),
+    plot.caption = element_markdown(family = "cc", margin = margin(b = 5), lineheight = 1.2),
+    plot.background = element_rect(fill = "#e6ffff", colour = "#e6ffff"),
+    panel.background = element_rect(fill = "#e6ffff", colour = "#e6ffff")
   )
   
 
