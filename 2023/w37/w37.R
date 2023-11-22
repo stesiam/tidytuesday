@@ -39,7 +39,7 @@ global_economic_activity <- readr::read_csv('https://raw.githubusercontent.com/r
 
 
 
-title = glue("<span style='font-family:fs; color: black;'>&#xf236;</span> <span style='font-family:lo; color: black;'> Sleep </span> <span style='font-family:lo; color: red;'>Uncertainty </span> </span> <span style='font-family:fs; color: black;'  >&#xf236;</span>")
+title = glue("<span style='font-family:fs; color: #c19a68;'>&#xf236;</span> <span style='font-family:lo; color: black;'> Sleep </span> <span style='font-family:lo; color: red;'>Uncertainty </span> </span> <span style='font-family:fs; color: #c19a68;'  >&#xf236;</span>")
 subtitle = glue("Sleep is one of the most important parts of daytime as it consists one third <br>
                  of it. The less uncertainty in <b>sleep time</b> is in <span style='font-family:lo; color: #009933;'>North America</span>, <span style='font-family:lo; color: #009933;'>EU</span>,  <span style='font-family:lo; color: #009933;'>India</span>, <br>
 <span style='font-family:lo; color: #009933;'>Australia</span> and  <span style='font-family:lo; color: #009933;'>New Zealand</span>. 
