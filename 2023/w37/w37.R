@@ -19,7 +19,7 @@ library(rnaturalearthdata)
 sysfonts::font_add_google("EB Garamond", "eb")
 sysfonts::font_add_google("Pacifico", "pc")
 sysfonts::font_add_google("Lilita One", "lo")
-sysfonts::font_add_google("Oswald", "caption")
+sysfonts::font_add("title", "/home/stelios/Downloads/Vina_Sans/VinaSans-Regular.ttf")
 sysfonts::font_add('fb', '/home/stelios/Downloads/fontawesome-free-6.4.0-desktop/otfs/Font Awesome 6 Brands-Regular-400.otf')
 sysfonts::font_add('fs', '/home/stelios/Downloads/fontawesome-free-6.4.0-desktop/otfs/Font Awesome 6 Free-Solid-900.otf')
 
@@ -39,7 +39,7 @@ global_economic_activity <- readr::read_csv('https://raw.githubusercontent.com/r
 
 
 
-title = glue("<span style='font-family:fs; color: #c19a68;'>&#xf236;</span> <span style='font-family:lo; color: black;'> Sleep </span> <span style='font-family:lo; color: red;'>Uncertainty </span> </span> <span style='font-family:fs; color: #c19a68;'  >&#xf236;</span>")
+title = glue("<span style='font-family:title; color: black;'> SLEEP </span> <span style='font-family:title; color: red;'>UNCERTAINTY </span>")
 subtitle = glue("Sleep is one of the most important parts of daytime as it consists one third <br>
                  of it. The less uncertainty in <b>sleep time</b> is in <span style='font-family:lo; color: #009933;'>North America</span>, <span style='font-family:lo; color: #009933;'>EU</span>,  <span style='font-family:lo; color: #009933;'>India</span>, <br>
 <span style='font-family:lo; color: #009933;'>Australia</span> and  <span style='font-family:lo; color: #009933;'>New Zealand</span>. 
@@ -75,7 +75,7 @@ plot = ggplot(data = c) +
   ) + 
   theme(
     legend.position = "none",
-    plot.title = element_markdown(family = "lo", hjust = 0.5, margin = margin(t =5, b = 5)),
+    plot.title = element_markdown(family = "title", hjust = 0.5, margin = margin(t =8, b = 8)),
     plot.title.position = "plot",
     plot.subtitle = element_markdown(family = "eb", margin = margin(r = 5, l = 5)),
     plot.caption = element_markdown(family = "caption", margin = margin(b = 5), lineheight = 1.2, size = 7),
