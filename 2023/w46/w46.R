@@ -37,13 +37,14 @@ l = house %>%
   summarise(s = sum(Amount))
 
 
+## NOTE: Manually found the rgba equivalent to hex one, as rgba() not working on ggplot
+
 title = glue("<span style='font-family:fs; color:purple;'  >&#xf290;</span> <b>Diwali Sales Data per Age Group</b> <span style='font-family:fs; color:purple;'  >&#xf290;</span>")
 subtitle = glue("<b>Diwali</b>, (also called Deepavali) is the Hindu festival of lights with its variations also celebrated
                 in <br> other Indian religions. The celebrations generally last five or six days. In this week's dataset <br> we observe that the age group 26-35 
                 has spent the most money while underage individuals<br>spent the least.
                 In total, the sales sum up to <span style='font-weight: bold; font-family:gpb;'>{round(sum(l$s)/1000000, 1)} millions rupees</span>.")
-caption = glue("<span style='font-family:title; color:grey;'><span style='font-weight: bold;'>NOTE:</span> Each </span> <span style='font-family:fs; color:green;'>&#xf53a;</span> <span style='font-family:title; color:grey;'>corresponds to 1 million (1,000,000) rupees ₹ (≈ 11,000 €)</span><br> Tidy Tuesday, week 46<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
-
+caption = glue("<span style='font-family:title; color:grey;'><span style='font-weight: bold;'>NOTE:</span> Each </span> <span style='font-family:fs; color:#00f00080;'>&#xf53a;</span> <span style='font-family:title; color:grey;'>corresponds to 1 million (1,000,000) rupees ₹ (≈ 11,000 €)</span><br><b>SOURCE:</b> Kaggle Datasets | Tidy Tuesday, week 46<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
 
 
 data.frame(
@@ -113,5 +114,4 @@ ggsave(
   device = "png",
   height = 4,
   width = 6)
-
 
