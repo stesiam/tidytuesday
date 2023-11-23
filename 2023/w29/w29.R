@@ -18,6 +18,8 @@ library(sysfonts)
 sysfonts::font_add_google("Amiri", "Amiri")
 sysfonts::font_add_google("EB Garamond","eb")
 sysfonts::font_add_google("Karantina","title")
+sysfonts::font_add_google("Ubuntu Condensed","uc")
+
 
 #sysfonts::font_add_google("Gentium Plus", "gp")
 #sysfonts::font_add('gp',"/home/stelios/Downloads/Gentium_Plus/GentiumPlus-Regular.ttf")
@@ -69,9 +71,9 @@ labels = c(
 p1 = ggplot(df) +
   geom_col(aes(x = model, y = pct, fill = model)) +
   geom_text(aes(x = model, y = pct+3, label = paste0(pct, " %")), 
-            family = "Amiri",
+            family = "uc",
             size = 3) +
-  scale_y_continuous(expand = c(0, 0), limits = c(0,80)) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0,85)) +
   labs(
     title = "",
     x = "Model",
@@ -101,7 +103,7 @@ p2 = detectors %>%
   geom_col(aes(x = pct, y = reorder(detector, pct)),
            fill = "dodgerblue3", alpha = 0.5) +
   geom_text(aes(x = pct-6, y = reorder(detector, pct), label = paste0(pct, " %")),
-            family = "Amiri", color = "white") +
+            family = "uc", color = "white") +
   scale_y_discrete(
     name = NULL,
     labels = labels
