@@ -52,7 +52,7 @@ subtitle = glue("<b>Snopes</b>, formerly known as the Urban Legends Reference Pa
                 It has been <br>described as a 'well-regarded reference for sorting out myths and rumors' on the Internet.
                 The site <br>has also been seen as a source for both validating and debunking urban legends and similar stories<br> in American popular culture.
                 On this plot were included authors with at least  5 articles.")
-caption = glue("Tidy Tuesday, week 44<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
+caption = glue("<b>SOURCE:</b> Snopes | Tidy Tuesday, week 44<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
 
 g$author = factor(g$author, levels=g$author)
 
