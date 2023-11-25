@@ -22,6 +22,7 @@ library(sysfonts)
 
 sysfonts::font_add_google("Amiri", "Amiri")
 sysfonts::font_add_google("EB Garamond","eb")
+sysfonts::font_add_google("Oswald","caption")
 #sysfonts::font_add_google("Gentium Plus", "gp")
 #sysfonts::font_add('gp',"/home/stelios/Downloads/Gentium_Plus/GentiumPlus-Regular.ttf")
 
@@ -51,7 +52,7 @@ title = glue("<b>Numbats' Observations</b>")
 subtitle = glue("In total ", {nrow(numbats)}, " numbats have been observed in Australia. <br>
                       The vast majority of those are <span style = 'color:red;'>Myrmecobius fasciatus</span>
                       <br> and just 12 are <span style = 'color:dodgerblue;'>Myrmecobius fasciatus rufus</span>.")
-caption = glue("Tidy Tuesday, week 10<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023")
+caption = glue("<b>SOURCE:</b> Atlas of Living Australia | Tidy Tuesday, week 10<br><b>VISUALIZATION: </b><span style='font-family:fb;'>&#xf09b;</span><b> stesiam</b>, 2023")
   
 # Plot numbats observations
 
@@ -64,12 +65,12 @@ map = ggplot() +
     subtitle = subtitle,
     caption = caption
   ) +
-  theme_void(base_size = 10) +
+  theme_void(base_size = 12) +
   theme(
     plot.title = element_markdown(family = "Amiri", color = "black"),
     plot.title.position = "plot",
     plot.subtitle = element_markdown(family = "eb", color = "black"),
-    plot.caption = element_markdown(family = "eb", color = "black",lineheight = 1.2,
+    plot.caption = element_markdown(family = "caption", color = "black",lineheight = 1.2,
                                     margin = margin(b = 5)),
     legend.position = "none"
   )
@@ -83,3 +84,4 @@ ggsave(
   bg = "white",
   height = 4,
   width = 4.5)
+
