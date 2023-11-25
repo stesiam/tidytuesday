@@ -26,8 +26,8 @@ showtext_auto()
 
 ## Import data
 
-stock_prices = read_csv("2023/w6/data/big_tech_stock_prices.csv")
-companies = read_csv("2023/w6/data/big_tech_companies.csv")
+stock_prices = read_csv("2023/w06/data/big_tech_stock_prices.csv")
+companies = read_csv("2023/w06/data/big_tech_companies.csv")
 
 ## Combine dataset
 
@@ -71,7 +71,9 @@ map = stock_prices %>%
     panel.background = element_rect(fill = "grey98"),
     plot.background = element_rect(fill = "grey98"),
     legend.background = element_rect(fill = "grey98"),
-    legend.position = c(.3, .7),
+    legend.title = element_blank(),
+    legend.text = element_text(size = 40),
+    legend.position = c(.4, .7),
     legend.justification = c("right", "top"),
     legend.box.just = "right",
     legend.margin = margin(6, 6, 6, 6),
@@ -82,7 +84,7 @@ map = stock_prices %>%
 
 
 ggsave(
-  filename = "2023/w6/w6-2023-tt.png",
+  filename = "2023/w06/w06-2023-tt.png",
   plot = map,
   device = "png",
   width = 4.5,
