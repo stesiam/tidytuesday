@@ -106,8 +106,8 @@ plot = ggplot(x, aes(y = reorder(Entity, -`1950`))) +
     axis.title.x = element_blank(),
     axis.title.y = element_blank(),
     axis.text = element_text(color = "black"),
-    plot.background = element_rect(fill = "white", color = "white"),
-    panel.background = element_rect(fill = "white", color = "white"),
+    plot.background = element_rect(fill = "#eed9c4", color = "#eed9c4"),
+    panel.background = element_rect(fill = "#eed9c4", color = "#eed9c4"),
     plot.caption = element_markdown(family = "title", margin = margin(t = 2, r = 5, b = 4), 
                                     lineheight = 1.4,
                                     color = "black",
@@ -123,6 +123,6 @@ ggsave(
   plot = plot,
   device = "png",
   height = 4,
-  width = 6
+  width = 6,
 )
 
