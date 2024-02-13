@@ -60,13 +60,13 @@ p =english_education %>%
   geom_col(mapping = aes(x = reorder(size_flag, -mean), y = mean, fill = color)) +
   geom_richtext(aes(x = size_flag, y = mean+0.15, label = round(mean, 2)), fontface  = "bold", 
                 family = "uc", label.color = NA, size = 4) +
-  scale_fill_manual(values = c("lower0" = "red3", "upper0" = "green4") )+
+  scale_fill_manual(values = c("lower0" = "#8B0000", "upper0" = "#006400") )+
   labs(
     title = title,
     subtitle = subtitle,
     caption = caption,
     x = "",
-    y = "Mean Education Score") +
+    y = "Average Education Score") +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black", lwd = 0.5) + 
   theme_classic(base_size = 13,
                 base_family = "gp") +
