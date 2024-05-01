@@ -1,6 +1,6 @@
 # Tidy Tuesday
 
-Selected viz based on Tidy Tuesday
+Selected visualizations based on [Tidy Tuesday's](https://github.com/rfordatascience/tidytuesday) repository.
 
 | **Week**  | **Source** | **Geoms** |**Visualization** | 
 | :-------------: | :---:| :---: |:-------------: |
