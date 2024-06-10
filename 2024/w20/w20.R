@@ -68,10 +68,9 @@ pctWhyDrinkCoffee$font  = fontawesome(c("fa-coffee", "fa-calendar", "fa-warning"
 pctWhyDrinkCoffee$col = c("brown", "grey90", "orange2", "yellow1")
 
 title_text = glue("Why do you drink <span style='color:brown;' >coffee</span> ?")
-subtitle_text = glue("As not a coffe enjoyer I have been wondering why do people
-                      like coffee. <br>
-                      I have tasted coffee for once and it was awful. However, I should have <br> second thoughts as almost
-                      everyone is referring to its taste.")
+subtitle_text = glue("As someone who does not enjoy coffee, I have always been wondering why <br> people like it
+                     I tasted coffee once, and it was awful. However, I should <br> reconsider as almost
+                      everyone refers to its taste.")
 caption_text = "<b>Data:</b> Great American Coffee Taste Test Survey<br>Tidy Tuesday, Week 20 (2024)<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2024"
 
 pctWhyDrinkCoffee$icontest = c(
@@ -80,15 +79,10 @@ pctWhyDrinkCoffee$icontest = c(
                                "https://www.svgrepo.com/show/503650/toilet-paper.svg",
                                "https://www.svgrepo.com/show/401471/face-savoring-food.svg")
 
-ggplot(data = pctWhyDrinkCoffee) +
+plot = ggplot(data = pctWhyDrinkCoffee) +
   geom_richtext(aes(x = 0, y = 0.08, label = glue("<b><span style ='color: red; family=title; font-size:31pt;'>{round(percentage, digits = 0)}</span></b>%")), 
                 family = "jost", size = 5, fill = NA, label.color = NA,
                 color = "white") +
-  # geom_richtext(aes(x = 0, y = 0.22, label = font, colour =  font, group = font),
-  #           family = "fs",
-  #           size = 12,
-  #           color = "white",
-  #           fill = NA, label.color = NA) +
   geom_image(aes(x = 0, y = 0.22, image = icontest), size = 0.3) +
   scale_y_continuous(limits = c(0, 0.3)) +
   facet_wrap(~factor(why_drink, levels = c('Tastes Good', 'Need caffeine',
