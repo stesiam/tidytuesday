@@ -56,9 +56,9 @@ clean_data = merged_dataset |>
 
 ## Plot texts
 
-title = glue("<span style='color:#4285f4;'>Google</span> vs <span style='color:#ff9900;'>Amazon</span><br> stock prices ($USD)")
-subtitle = glue("Comparison of Adjusted Closing Stock Prices<br> of Google (GOOGL) and Amazon (AMZN) <br>between 2010 and 2022.")
-caption = glue("<span style = 'font-family:fs; color:#ffffff;'>&#xf1c0; </span> <b>SOURCE:</b> Yahoo Finance | Tidy Tuesday, week 6<br> <span style = 'font-family:fs; color:#ffffff;'>&#xe473; </span> <b>VISUALIZATION:</b><span style='font-family:fb;'> &#xf09b; </span><b>stesiam</b>, 2023")
+title = glue("Τιμές μετοχών των <br> <span style='color:#4285f4;'>Google</span> και <span style='color:#ff9900;'>Amazon</span><br> σε $ δολλάρια ΗΠΑ")
+subtitle = glue("Σύγκριση των προσαρμοσμένων τιμών κλεισίματος <br>των μετοχών της Google (GOOGL) και της<br> Amazon (AMZN) μεταξύ των ετών 2010 <br> και 2022.")
+caption = glue("<span style = 'font-family:fs; color:#ffffff;'>&#xf1c0; </span> <b>Πηγή:</b> Yahoo Finance | Tidy Tuesday, week 6<br> <span style = 'font-family:fs; color:#ffffff;'>&#xe473; </span> <b>Γράφημα:</b><span style='font-family:fb;'> &#xf09b; </span><b>stesiam</b>, 2023")
 
 
 ## Create visualization
@@ -76,28 +76,28 @@ plot = clean_data %>%
   geom_richtext(aes(x = 2010, y = 135,
                     label = title),
                 fill = NA, label.color = NA,
-                fontface="bold",family="jost",
+                fontface="bold",family="serif",
                 color = "white",size = 8, hjust = 0
   ) +
   
   # Plot subtitle
   
-  geom_richtext(aes(x = 2010, y = 85,
+  geom_richtext(aes(x = 2010, y =75,
                     label = subtitle),
                 fill = NA, label.color = NA
-                ,family="jost",
+                ,family="serif",
                 lineheight = 1.3,
                 color = "white",size = 4, hjust = 0
   ) +
   
   # Plot caption
   
-  geom_richtext(aes(x = 2017, y = 20,
+  geom_richtext(aes(x = 2017.2, y = 20,
                     label = caption),
                 fill = NA, label.color = NA
-                ,family="jost",
+                ,family="serif",
                 lineheight = 1.6,
-                color = "white",size = 2.4, hjust = 0
+                color = "white",size = 2.6, hjust = 0
   ) +
   
   labs(
@@ -132,16 +132,15 @@ plot = clean_data %>%
     axis.text.y.left = element_blank(),
     axis.ticks.y.right = element_line(size = 1, color = "#ffffff"),
     axis.ticks.x.bottom = element_line(size = 1, color = "#ffffff")
-)
+  )
 
 ## Export it
 
 
 
 ggsave(
-  filename = "2023/w06/w06-2023-tt.png",
+  filename = "2023/w06/w06-2023-tt-el.png",
   plot = plot,
   device = "png",
   width = 6,
   height = 4)
-
