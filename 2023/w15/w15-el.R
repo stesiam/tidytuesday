@@ -45,14 +45,14 @@ max_egg_total = eggproduction %>%
   summarise(max = round(max(n_eggs)/10^9, 1))
 
 
-title = glue("<b>Table Egg Production in US</b>")
-subtitle = glue("Total production of table eggs is relatively stable the last years, 
-                ranging from <span style = 'color:red;'><b>{min_egg_total}</b></span> to 
-                <span style = 'color:red;'><b>{max_egg_total}</b></span> billion table-eggs per month. A worth-noting
-                fact is increase of <b>cage-free</b> table eggs as a portion of total production.
-                Most recent data reveal that the <b>cage-free</b> eggs are one quarter of the total production in comparison with the 9.8 at December of 2016")
+title = glue("<b>Παραγωγή αυγών για κατανάλωση στις ΗΠΑ</b>")
+subtitle = glue("Η παραγωγή αυγών που προορίζονται για κατανάλωση είναι σχετικά σταθερή τα τελευταία χρόνια αφού κυμαίνεται μεταξύ <span style = 'color:red;'><b>{min_egg_total}</b></span> και 
+                <span style = 'color:red;'><b>{max_egg_total}</b></span> δις το μήνα. Ένα σημαντικό στατιστικό
+                είναι η <b>αυξημένη συμμετοχή των αυγών από κότες ελευθέρας βοσκής</b> ως σύνολο της συνολικής παραγωγής.
+                Τα πρόσφατα δεδομένα (2021) υποδεικνύουν ότι τα αυγά που προέρχονται από κότες ελευθέρας βοσκής καταλαμβάνουν το 1/4
+                του συνόλου, αντί του 10% το 2016.")
 
-caption = glue("<b>SOURCE:</b> The Humane League | Tidy Tuesday, week 15<br><b>VISUALIZATION: </b><span style='font-family:fb;'>&#xf09b;</span><b> stesiam</b>, 2023")
+caption = glue("<b>Πηγή:</b> The Humane League | Tidy Tuesday, week 15<br><b>Γράφημα: </b><span style='font-family:fb;'>&#xf09b;</span><b> stesiam</b>, 2023")
 
 min_egg_total = eggproduction %>%
   filter(prod_type == "table eggs" & prod_process == "all") %>%
@@ -83,17 +83,17 @@ extract_proportion_caged_uncaged = eggproduction |>
   group_by(year) |>
   mutate(sum = sum(average),
          pct = round((average/sum)*100, digits = 1) )
-  
 
-    
-  
+
+
+
 plot1 = ggplot(extract_proportion_caged_uncaged) +
   # color = "white" indicates the color of the lines between the areas
   geom_line(aes(x = year, y = pct, group = prod_process, color = prod_process)) +
-  geom_text(x = 2017.3, y = 81, label = "Caged", family = "jost", 
-            color = wes_palette(n=2, name="Royal1")[[2]], angle = -6) +
-  geom_text(x = 2017.4, y = 21, label = "Cage-free", family = "jost", 
-            color = wes_palette(n=2, name="Royal1")[[1]], angle = 6) +
+  geom_text(x = 2017.3, y = 81, label = "Κλωβοστοιχίας", family = "serif", 
+            color = wes_palette(n=2, name="Royal1")[[2]], angle = -6, size = 3) +
+  geom_text(x = 2017.4, y = 21, label = "Ελευθέρας βοσκής", family = "serif", 
+            color = wes_palette(n=2, name="Royal1")[[1]], angle = 6, size = 3) +
   geom_point(data = extract_proportion_caged_uncaged %>% dplyr::filter(year %in% c(2016,2019,2021)), 
              aes(x = year, y = pct, color = prod_process), size = 7) +
   scale_x_continuous(expand = c(0, 0), limits = c(2015.5, 2021.5), breaks = c(2016, 2019, 2021)) +
@@ -103,16 +103,16 @@ plot1 = ggplot(extract_proportion_caged_uncaged) +
                 fill = NA, label.color = NA, fontface = "bold", 
                 family = "caption",hjust = 0.5) +
   labs(
-    title = "Egg production by process",
-    subtitle = "(%) of total table eggs"
+    title = "Παραγωγή αυγών ανά συνθήκες εκτροφής",
+    subtitle = "(%) συνολικών αυγών"
   ) + 
   scale_color_manual(values=wes_palette(n=2, name="Royal1")) +
   theme_classic(base_size = 8) +
   theme(
     legend.position = "none",
     axis.title = element_blank(),
-    plot.title = element_markdown(family = "jost",face = "bold", color = "white"),
-    plot.subtitle = element_markdown(family = "caption", color = "grey60"),
+    plot.title = element_markdown(family = "serif",face = "bold", color = "white"),
+    plot.subtitle = element_markdown(family = "serif", color = "grey60"),
     panel.background = element_rect(fill = "transparent", color = "transparent"),
     plot.background = element_rect(fill = "transparent", color = "transparent"),
     axis.text = element_text(color = "white"),
@@ -140,14 +140,14 @@ proportion_organic_non_organic = eggproduction |>
   group_by(year, type) |>
   summarise(average = mean(obs)) |>
   mutate(average = round(average*100, 1))
-  
-  
+
+
 plot2 = ggplot(proportion_organic_non_organic) +
   # color = "white" indicates the color of the lines between the areas
   geom_line(aes(x = year, y = average, group = type, color = type)) +
-  geom_text(x = 2017.3, y = 72, label = "Non Organic", family = "jost", 
+  geom_text(x = 2017.3, y = 72, label = "Μη βιολογικά", family = "serif", 
             color = wes_palette(n=2, name="Zissou1")[[1]], angle = 13, size = 3) +
-  geom_text(x = 2017.4, y = 36.4, label = "Organic", family = "jost", 
+  geom_text(x = 2017.4, y = 36.4, label = "ΒΙολογικά", family = "serif", 
             color = wes_palette(n=2, name="Zissou1")[[2]], angle = -10, size = 3) +
   geom_point(data = proportion_organic_non_organic %>% dplyr::filter(year %in% c(2016,2019,2021)),
              aes(x = year, y = average, color = type), size = 7) +
@@ -158,16 +158,16 @@ plot2 = ggplot(proportion_organic_non_organic) +
                 fill = NA, label.color = NA, fontface = "bold", 
                 family = "caption",hjust = 0.5) +
   labs(
-    title = "Egg production by cage-free type",
-    subtitle = "(%) of cage-free table eggs"
+    title = "Παραγωγή αυγών ανά τύπο εκτροφής",
+    subtitle = "(%) επί του συνόλου των ελευθέρας βοσκής αυγών"
   ) + 
   scale_color_manual(values=wes_palette(n=2, name="Zissou1")) +
   theme_classic(base_size = 8) +
   theme(
     legend.position = "none",
     axis.title = element_blank(),
-    plot.title = element_markdown(family = "jost",face = "bold", color = "white"),
-    plot.subtitle = element_markdown(family = "caption", color = "grey60"),
+    plot.title = element_markdown(family = "serif",face = "bold", color = "white"),
+    plot.subtitle = element_markdown(family = "serif", color = "grey60"),
     panel.background = element_rect(fill = "transparent", color = "transparent"),
     plot.background = element_rect(fill = "transparent", color = "transparent"),
     axis.text = element_text(color = "white"),
@@ -175,35 +175,35 @@ plot2 = ggplot(proportion_organic_non_organic) +
   )  
 
 title_theme = theme(
-    plot.title = element_markdown(
-      family = "Amiri", 
-      face = "bold",hjust = 0.5,
-      color = "white",
-      margin = margin(t = 5, b = 5)),
-    plot.subtitle = element_textbox_simple(
-      family = "jost", lineheight = 1.3,
-      size = 9,
-      margin = margin(b = 10, t = 5),
-      color = "white"),
-    plot.caption = element_markdown(family = "caption", lineheight = 1.3, color = "white", size = 7),
-    plot.background = element_rect(fill = 'black', color = "black")
-  )
+  plot.title = element_markdown(
+    family = "serif", 
+    face = "bold",hjust = 0.5,
+    color = "white",
+    margin = margin(t = 5, b = 5)),
+  plot.subtitle = element_textbox_simple(
+    family = "serif", lineheight = 1.3,
+    size = 8.5,
+    margin = margin(b = 10, t = 5),
+    color = "white"),
+  plot.caption = element_markdown(family = "serif", lineheight = 1.3, color = "white",
+                                  size = 6.5),
+  plot.background = element_rect(fill = 'black', color = "black")
+)
 
- 
+
 combined = (plot1 + plot2) &
   plot_annotation(
     title = title,
     subtitle = subtitle,
     caption = caption,
     theme = title_theme
-)
-
-ggsave(
-    filename = "2023/w15/w15-2023-tt.png",
-    plot = combined,
-    device = "png",
-    height = 4,
-    width = 6
   )
 
-  
+ggsave(
+  filename = "2023/w15/w15-2023-tt-el.png",
+  plot = combined,
+  device = "png",
+  height = 4,
+  width = 6
+)
+
