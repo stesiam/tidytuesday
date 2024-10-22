@@ -1,11 +1,13 @@
 library(readr)
 library(dplyr)
+library(tidyr)
 
 library(ggtext)
 library(lubridate)
 
 library(glue)
 library(ggplot2)
+library(patchwork)
 library(wesanderson)
 library(showtext)
 library(sysfonts)
@@ -147,7 +149,7 @@ plot2 = ggplot(proportion_organic_non_organic) +
   geom_line(aes(x = year, y = average, group = type, color = type)) +
   geom_text(x = 2017.3, y = 72, label = "Μη βιολογικά", family = "serif", 
             color = wes_palette(n=2, name="Zissou1")[[1]], angle = 13, size = 3) +
-  geom_text(x = 2017.4, y = 36.4, label = "ΒΙολογικά", family = "serif", 
+  geom_text(x = 2017.4, y = 36.4, label = "Βιολογικά", family = "serif", 
             color = wes_palette(n=2, name="Zissou1")[[2]], angle = -10, size = 3) +
   geom_point(data = proportion_organic_non_organic %>% dplyr::filter(year %in% c(2016,2019,2021)),
              aes(x = year, y = average, color = type), size = 7) +

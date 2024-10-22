@@ -1,11 +1,13 @@
 library(readr)
 library(dplyr)
+library(tidyr)
 
 library(ggtext)
 library(lubridate)
 
 library(glue)
 library(ggplot2)
+library(patchwork)
 library(wesanderson)
 library(showtext)
 library(sysfonts)
