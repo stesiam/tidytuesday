@@ -67,6 +67,7 @@ plot = ggplot(data = freq) +
   geom_point(aes(x = Year, y = Packages)) +
   geom_richtext(aes(x = "2016", y = 5000, label = label), 
                 fill = NA, label.color = NA) +
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 7000))+
   labs(
     title = title,
     subtitle = subtitle,
