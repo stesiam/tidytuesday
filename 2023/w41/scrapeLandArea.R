@@ -23,14 +23,14 @@ ind_html <-
 s = ind_html[[1]] %>%
   row_to_names(1) %>%
   clean_names() %>%
-  select(.,c(1,2, 10)) %>%
+  select(.,c(1,2, 8)) %>%
   setNames(c("state", "state_abbrev", "LandArea"))
 
 
 s1 = ind_html[[2]] %>%
   row_to_names(1) %>%
   clean_names() %>%
-  select(.,c(1,2, 10)) %>%
+  select(.,c(1,2, 6)) %>%
   setNames(c("state", "state_abbrev", "LandArea"))
 
 
