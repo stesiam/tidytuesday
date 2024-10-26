@@ -10,10 +10,25 @@ library(showtext)
 library(sysfonts)
 library(countrycode)
 
+library(keyring)
+library(deeplr)
+
+## Set secrets
+# Create custom keyring
+
+#keyring::keyring_create("my_custom_keyring")
+
+# Set API
+
+#keyring::key_set("DEEPL_API", keyring = "my_custom_keyring")
+#deepl_api = keyring::key_get("DEEPL_API", keyring = "my_custom_keyring")
+
+
+
 ## Load fonts
 
-sysfonts::font_add_google("Amiri", "Amiri")
-sysfonts::font_add_google("Jost","jost")
+sysfonts::font_add_google("Roboto Condensed", "rbc")
+sysfonts::font_add_google("Advent Pro","ap")
 sysfonts::font_add_google("Oswald","caption")
 sysfonts::font_add_google("Ubuntu Condensed","uc")
 
@@ -33,21 +48,20 @@ total_participants = london_marathon %>%
   select(Starters) %>%
   drop_na() %>%
   sum(.)
-  
+
 total_finishers = london_marathon %>%
   select(Finishers) %>%
   drop_na() %>%
   sum(.)
 
 
-title = glue("<b>London Marathon Winners' Nationality</b>")
-subtitle = glue("London Marathon is an annual marathon held in London.
-                The first one held in 1981. In total, London Marathon participants 
-                over the years (until 2020) counts to <span style = 'font-weight: bold;'>{round(total_participants/10^6, digits = 2)} </span>millions 
-                with <span style = 'color:red; font-family: uc; font-weight: bold;'> {paste0(round(total_finishers/total_participants*100, digits =1),'%')} </span> of them finishing the race.
-                In <b> Elite</b> events Kenyan athletes are dominating. 
-                The UK athletes have analogous success
-                on <b>Wheelchair (T53/T54)</b> events.")
+title = glue("<b>Χώρες Νικητών του Μαραθώνιου του Λονδίνου</b>")
+subtitle = glue("Ο Μαραθώνιος του Λονδίνου είναι ένας ετήσιος μαραθώνιος που διεξάγεται στους δρόμους της ομώνυμης πόλης.
+                Ο πρώτος μαραθώνιος διοργανώθηκε το 1981. Συνολικά, στον Μαραθώνιο του Λονδίνου έχουν
+                συμμετάσχει (μέχρι το 2020) <span style = 'font-weight: bold;'>{round(total_participants/10^6, digits = 2)} </span>εκατομμύρια 
+                εκ των οποίων <span style = 'color:red; font-family: uc; font-weight: bold;'> {paste0(round(total_finishers/total_participants*100, digits =1),'%')} </span> έχουν τερματίσει.
+                Στον κλασσικό μαραθώνιο οι Κενυάτες αθλητές έχουν τις περισσότρες νίκες, ενώ ανάλογη επιτυχία έχουν αθλητές της Μεγάλης Βρετανίας
+                στο μαραθώνιο με αμαξίδιο (T53/T54).")
 caption = "Tidy Tuesday, week <b>17</b><br>stesiam, 2023"
 
 
@@ -81,23 +95,27 @@ wins_by_country_category <- winners %>%
     )
   ) %>%
   filter(!is.na(rank_as_we_see_it)) %>%
-  ungroup()
-  
+  ungroup() %>%
+  mutate(
+    Nationality.el = deeplr::translate2(text = wins_by_country_category$Nationality, source_lang = "EN", target_lang = "EL",auth_key = deepl_api),
+    Category.el = deeplr::translate2(text = wins_by_country_category$Category, source_lang = "EN", target_lang = "EL",auth_key = deepl_api)
+  )
 
 plot = ggplot(data = wins_by_country_category) +
-  geom_col(aes(y = n, x = reorder(Nationality, rank_as_we_see_it), fill = medal, group = medal)) +
-  ggflags::geom_flag(aes(y = -4, x = Nationality,
-                                  country = iso2c), 
+  geom_col(aes(y = n, x = reorder(Nationality.el, rank_as_we_see_it), fill = medal, group = medal)) +
+  ggflags::geom_flag(aes(y = -4, x = reorder(Nationality.el, rank_as_we_see_it),
+                         country = iso2c), 
                      size = 6) + 
-  geom_richtext(aes(y = n, x = Nationality, label = n),
-            size = 4,
-            family = "uc",
-            color = "black",
-            nudge_y = -0.5) +
-  facet_wrap(~factor(Category, c("Men", 
-                                 "Wheelchair Men", 
-                                 "Women", 
-                                 "Wheelchair Women")), 
+  geom_richtext(aes(y = n, x = reorder(Nationality.el, rank_as_we_see_it), label = n),
+                size = 3.5,
+                family = "uc",
+                color = "black",
+                nudge_y = 0.5) +
+  facet_wrap(~factor(Category.el, levels = c("Άνδρες", 
+                                 "Άνδρες σε αναπηρικό αμαξίδιο", 
+                                 "Γυναίκες", 
+                                 "Γυναίκες σε αναπηρικό αμαξίδιο"),
+                     ), 
              scales = "free") +
   scale_fill_manual(values = c("Gold" = "gold", "Silver" = "#C0C0C0", "Bronze" = "#CD7F32")) +
   scale_y_continuous(expand = c(0,0), limits = c(-4, 20)) +
@@ -111,8 +129,8 @@ plot = ggplot(data = wins_by_country_category) +
   ) +
   theme_classic(base_size = 10) +
   theme(
-    plot.title = element_markdown(family = "jost", margin = margin(t = 5)),
-    plot.subtitle = element_textbox_simple(family = "jost", margin = margin(t = 5, b = 10)),
+    plot.title = element_markdown(family = "rbc", margin = margin(t = 5), hjust = 0.5),
+    plot.subtitle = element_textbox_simple(family = "ap", margin = margin(t = 5, b = 10)),
     plot.caption = element_markdown(family = "caption"),
     legend.position = "none",
     strip.background = element_rect(fill = "#ccccff", linetype = "blank"),
@@ -122,11 +140,11 @@ plot = ggplot(data = wins_by_country_category) +
     axis.line = element_blank(),
     axis.ticks = element_blank(),
     axis.text.y = element_blank(),
-    axis.text.x = element_text(margin = margin(t=5))
-)
+    axis.text.x = element_text(margin = margin(t=7))
+  )
 
 ggsave(
-  filename = "2023/w17/w17-2023-tt.png",
+  filename = "2023/w17/w17-2023-tt-el.png",
   plot = plot,
   device = "png",
   height = 4,

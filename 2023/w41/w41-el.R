@@ -69,8 +69,8 @@ d$cat = factor(d$cat, c("Πολύ Υψηλή", "Υψηλή", "Μέτρια", "Χ
 
 title = glue("<b><span style='font-family:fs; color:  white;'  >&#xf6e2; </span> Στοιχιωμένες Πολιτείες των ΗΠΑ<span style='font-family:fs; color:  white;'  > &#xf6e2;</span></b>")
 subtitle = glue("Συνολικά, στις ΗΠΑ έχουν αναφερθεί <b>{nrow(haunted_places)}</b> στοιχειωμένα μέρη <br>
-                      Μεγάλυτερη συγκέντρωση αυτών παρατηρείται <br> στη πρωτεύουσα των ΗΠΑ, <span style = 'color:red;'>Washington DC</span> και στις πολιτείες <br><span style = 'color:orange;'>Rhode Island</span> 
-                      και της <span style = 'color:orange;'>Μασαχουσέτης</span>.")
+                      Μεγάλυτερη συγκέντρωση αυτών παρατηρείται <br> στη πρωτεύουσα των ΗΠΑ, **<span style = 'color:red;'>Washington DC</span>** και στις πολιτείες <br>**<span style = 'color:orange;'>Rhode Island</span>**
+                      και της **<span style = 'color:orange;'>Μασαχουσέτης</span>**.")
 caption = "<b>Σημείωση: Με βάση τη πυκνότητα των στοιχειωμένων τοποθεσιών ανά 1000 τετραγωνικά χλμ</b><br>Tidy Tuesday, week 41<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023"
 
 map = plot_usmap(data = d,
@@ -86,7 +86,7 @@ map = plot_usmap(data = d,
   theme_void() +
   theme(
     plot.title = element_markdown(family = "title", color = "white", hjust = 0.5, face= "bold",
-                                  size = 14),
+                                  size = 16),
     plot.title.position = "plot",
     plot.subtitle = element_markdown(family = "subtitle", color = "white", hjust = 0.5, size = 9),
     plot.caption = element_markdown(family = "caption", color = "white", size = 7,
