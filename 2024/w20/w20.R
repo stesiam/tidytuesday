@@ -16,14 +16,14 @@ library(emojifont)
 
 library(camcorder)
 
-gg_record(
-  dir = file.path(here::here("2024/w20"), "recording100"), # where to save the recording
-  device = "png", # device to use to save images
-  width = 6,      # width of saved image
-  height = 4,     # height of saved image
-  units = "in",   # units for width and height
-  dpi = 300       # dpi to use when saving image
-)
+# gg_record(
+#   dir = file.path(here::here("2024/w20"), "recording100"), # where to save the recording
+#   device = "png", # device to use to save images
+#   width = 6,      # width of saved image
+#   height = 4,     # height of saved image
+#   units = "in",   # units for width and height
+#   dpi = 300       # dpi to use when saving image
+# )
 
 # Import fonts
 sysfonts::font_add_google("Leckerli One", "title")
@@ -121,19 +121,19 @@ ggsave(
   width = 6)
 
 
-
-gg_playback(name = list.files("2024/w20","recording100", pattern = "*.png"),
-  first_image_duration = 5,
-  last_image_duration = 15,
-  frame_duration = .4,width = 1920, height = 1020, loop = F
-)
-
-gifski::gifski(png_files = list.files(here::here("2024/w20/recording100/", ""), 
-                                      full.names = T), 
-               gif_file = here::here("2024/w20/tt2024w20v3.gif"), 
-               delay = 0.55,loop = FALSE,width = 1920, height = 1080)
-av::av_encode_video(list.files('2024/w20/recording100/', '*.png'),
-                    output = '2024/w20/test.mp4',framerate = 0.55,verbose = T
-                      )
-
-library(av)
+# 
+# gg_playback(name = list.files("2024/w20","recording100", pattern = "*.png"),
+#   first_image_duration = 5,
+#   last_image_duration = 15,
+#   frame_duration = .4,width = 1920, height = 1020, loop = F
+# )
+# 
+# gifski::gifski(png_files = list.files(here::here("2024/w20/recording100/", ""), 
+#                                       full.names = T), 
+#                gif_file = here::here("2024/w20/tt2024w20v3.gif"), 
+#                delay = 0.55,loop = FALSE,width = 1920, height = 1080)
+# av::av_encode_video(list.files('2024/w20/recording100/', '*.png'),
+#                     output = '2024/w20/test.mp4',framerate = 0.55,verbose = T
+#                       )
+# 
+# library(av)
