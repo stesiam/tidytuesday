@@ -1,6 +1,7 @@
 library(readr)
 library(dplyr)
 library(tidyr)
+library(stringr)
 
 library(glue)
 
@@ -62,7 +63,7 @@ subtitle = glue("Ο Μαραθώνιος του Λονδίνου είναι έν
                 εκ των οποίων <span style = 'color:red; font-family: uc; font-weight: bold;'> {paste0(round(total_finishers/total_participants*100, digits =1),'%')} </span> έχουν τερματίσει.
                 Στον κλασσικό μαραθώνιο οι Κενυάτες αθλητές έχουν τις περισσότρες νίκες, ενώ ανάλογη επιτυχία έχουν αθλητές της Μεγάλης Βρετανίας
                 στο μαραθώνιο με αμαξίδιο (T53/T54).")
-caption = "Tidy Tuesday, week <b>17</b><br>stesiam, 2023"
+caption = "Tidy Tuesday, week <b>17</b><br><b>Πηγή:</b> LondonMarathon (R package)<br><b>Γράφημα:</b> stesiam, 2023"
 
 
 wins_by_country_category <- winners %>%
@@ -101,6 +102,8 @@ wins_by_country_category <- winners %>%
     Category.el = deeplr::translate2(text = wins_by_country_category$Category, source_lang = "EN", target_lang = "EL",auth_key = deepl_api)
   )
 
+bg_gradient <- grid::linearGradient(colours = rev(MetBrewer::met.brewer("Pillement")[5:6]))
+
 plot = ggplot(data = wins_by_country_category) +
   geom_col(aes(y = n, x = reorder(Nationality.el, rank_as_we_see_it), fill = medal, group = medal)) +
   ggflags::geom_flag(aes(y = -4, x = reorder(Nationality.el, rank_as_we_see_it),
@@ -129,18 +132,19 @@ plot = ggplot(data = wins_by_country_category) +
   ) +
   theme_classic(base_size = 10) +
   theme(
-    plot.title = element_markdown(family = "rbc", margin = margin(t = 5), hjust = 0.5),
-    plot.subtitle = element_textbox_simple(family = "ap", margin = margin(t = 5, b = 10)),
-    plot.caption = element_markdown(family = "caption"),
+    plot.title = element_markdown(family = "rbc", margin = margin(t = 5), hjust = 0.5, color = "white"),
+    plot.subtitle = element_textbox_simple(family = "ap", margin = margin(t = 5, b = 10), color = "white"),
+    plot.caption = element_markdown(family = "rbc", color = "white", lineheight = 1.2),
     legend.position = "none",
     strip.background = element_rect(fill = "#ccccff", linetype = "blank"),
     strip.text = element_markdown(family = "uc", face = "bold"),
-    plot.background = element_rect(color = NA),
+    panel.background = element_rect(fill = "transparent"),
+    plot.background = element_rect(color = NA, fill = bg_gradient),
     axis.text = element_text(family = "uc"),
     axis.line = element_blank(),
     axis.ticks = element_blank(),
     axis.text.y = element_blank(),
-    axis.text.x = element_text(margin = margin(t=7))
+    axis.text.x = element_text(margin = margin(t=7), color = "white")
   )
 
 ggsave(

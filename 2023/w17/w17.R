@@ -1,6 +1,7 @@
 library(readr)
 library(dplyr)
 library(tidyr)
+library(stringr)
 
 library(glue)
 
@@ -9,6 +10,7 @@ library(ggtext)
 library(showtext)
 library(sysfonts)
 library(countrycode)
+library(MetBrewer)
 
 ## Load fonts
 
@@ -48,7 +50,7 @@ subtitle = glue("London Marathon is an annual marathon held in London.
                 In <b> Elite</b> events Kenyan athletes are dominating. 
                 The UK athletes have analogous success
                 on <b>Wheelchair (T53/T54)</b> events.")
-caption = "Tidy Tuesday, week <b>17</b><br>stesiam, 2023"
+caption = "Tidy Tuesday, week <b>17</b><br><b>Source:</b> LondonMarathon (R package)<br><b>Graphic:</b> stesiam, 2023"
 
 
 wins_by_country_category <- winners %>%
@@ -83,6 +85,7 @@ wins_by_country_category <- winners %>%
   filter(!is.na(rank_as_we_see_it)) %>%
   ungroup()
   
+bg_gradient <- grid::linearGradient(colours = rev(MetBrewer::met.brewer("Pillement")[5:6]))
 
 plot = ggplot(data = wins_by_country_category) +
   geom_col(aes(y = n, x = reorder(Nationality, rank_as_we_see_it), fill = medal, group = medal)) +
@@ -111,18 +114,20 @@ plot = ggplot(data = wins_by_country_category) +
   ) +
   theme_classic(base_size = 10) +
   theme(
-    plot.title = element_markdown(family = "jost", margin = margin(t = 5)),
-    plot.subtitle = element_textbox_simple(family = "jost", margin = margin(t = 5, b = 10)),
-    plot.caption = element_markdown(family = "caption"),
+    plot.title = element_markdown(family = "jost", margin = margin(t = 5), color = "white", hjust = 0.5),
+    plot.subtitle = element_textbox_simple(family = "jost", margin = margin(t = 5, b = 10),
+                                           color = "white"),
+    plot.caption = element_markdown(family = "caption", color = "white"),
     legend.position = "none",
     strip.background = element_rect(fill = "#ccccff", linetype = "blank"),
     strip.text = element_markdown(family = "uc", face = "bold"),
-    plot.background = element_rect(color = NA),
+    panel.background = element_rect(fill = "transparent"),
+    plot.background = element_rect(color = NA, fill = bg_gradient),
     axis.text = element_text(family = "uc"),
     axis.line = element_blank(),
     axis.ticks = element_blank(),
     axis.text.y = element_blank(),
-    axis.text.x = element_text(margin = margin(t=5))
+    axis.text.x = element_text(margin = margin(t=5), color = "white")
 )
 
 ggsave(
