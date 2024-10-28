@@ -14,6 +14,8 @@ library(sysfonts)
 
 ## Load fonts
 
+
+
 sysfonts::font_add_google("Amiri", "Amiri")
 sysfonts::font_add_google("Jost","jost")
 sysfonts::font_add_google("Oswald","caption")
@@ -84,16 +86,18 @@ extract_proportion_caged_uncaged = eggproduction |>
   ungroup() |>
   group_by(year) |>
   mutate(sum = sum(average),
-         pct = round((average/sum)*100, digits = 1) )
+         pct = round((average/sum)*100, digits = 1)) 
   
+image1 = "2023/w15/grass.png"
+image2 = "2023/w15/cage.png"
 
-    
-  
 plot1 = ggplot(extract_proportion_caged_uncaged) +
   # color = "white" indicates the color of the lines between the areas
   geom_line(aes(x = year, y = pct, group = prod_process, color = prod_process)) +
   geom_text(x = 2017.3, y = 81, label = "Caged", family = "jost", 
             color = wes_palette(n=2, name="Royal1")[[2]], angle = -6) +
+  geom_image(x = 2018.5, y = 25, image = image1, size = 0.1) +
+  geom_image(x = 2018.1, y = 78, image = image2, size = 0.08) +
   geom_text(x = 2017.4, y = 21, label = "Cage-free", family = "jost", 
             color = wes_palette(n=2, name="Royal1")[[1]], angle = 6) +
   geom_point(data = extract_proportion_caged_uncaged %>% dplyr::filter(year %in% c(2016,2019,2021)), 

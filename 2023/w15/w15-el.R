@@ -87,7 +87,8 @@ extract_proportion_caged_uncaged = eggproduction |>
          pct = round((average/sum)*100, digits = 1) )
 
 
-
+image1 = "2023/w15/grass.png"
+image2 = "2023/w15/cage.png"
 
 plot1 = ggplot(extract_proportion_caged_uncaged) +
   # color = "white" indicates the color of the lines between the areas
@@ -96,6 +97,8 @@ plot1 = ggplot(extract_proportion_caged_uncaged) +
             color = wes_palette(n=2, name="Royal1")[[2]], angle = -6, size = 3) +
   geom_text(x = 2017.4, y = 21, label = "Ελευθέρας βοσκής", family = "serif", 
             color = wes_palette(n=2, name="Royal1")[[1]], angle = 6, size = 3) +
+  geom_image(x = 2018.6, y = 25, image = image1, size = 0.1) +
+  geom_image(x = 2018.4, y = 78, image = image2, size = 0.08) +
   geom_point(data = extract_proportion_caged_uncaged %>% dplyr::filter(year %in% c(2016,2019,2021)), 
              aes(x = year, y = pct, color = prod_process), size = 7) +
   scale_x_continuous(expand = c(0, 0), limits = c(2015.5, 2021.5), breaks = c(2016, 2019, 2021)) +
