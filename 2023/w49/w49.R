@@ -48,8 +48,8 @@ x = pivot_wider(data = life_expectancy, names_from = Year, values_from = LifeExp
 ## Plot texts
 
 title = glue("<span style='font-family:title; color: black;'> Life Expectancy in Scandinavia States</span>")
-subtitle = glue("Last 70 years, life expectancy has been increased in an unrepresented way.<br>
-                Scandinavia states raised their life expectancy by 10 years. At the same <br>
+subtitle = glue("Last 70 years, life expectancy has been increased in an unrepresented way.
+                Scandinavia states raised their life expectancy by 10 years. At the same
                 period, World's population life expectancy at birth raised by 26 years.
                 ")
 caption = "<b>NOTE:</b> This plot is referred to expected years of life at birth<br><b>SOURCE:</b> Our World in Data | Tidy Tuesday, week 49<br><b>VISUALIZATION:</b> <span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023"
@@ -90,7 +90,7 @@ plot = ggplot(x, aes(y = reorder(Entity, -`1950`))) +
     caption = caption,
     x = "Years",
     y = "") +
-  theme_classic(base_size = 13, 
+  theme_classic(base_size = 11, 
               base_family = "uc") +
   theme(
     panel.grid = element_blank(),
@@ -99,7 +99,7 @@ plot = ggplot(x, aes(y = reorder(Entity, -`1950`))) +
                                   hjust = 0.5, 
                                   color = "black",face = "bold"),
     plot.title.position = "plot",
-    plot.subtitle = element_markdown(family = "gp",
+    plot.subtitle = element_textbox_simple(family = "gp",
                                      margin = margin(t = 5, l = 10, r = 10, b = 5),
                                      lineheight = 1.1,
                                      color = "black"),
