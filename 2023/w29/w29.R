@@ -107,7 +107,7 @@ p1 = ggplot(df) +
             color = "white",size = 8,
             fill = NA, label.color = NA, hjust = 0.5) +
   geom_curve(
-    aes(x = 4, y = 83, xend = 1.5, yend = 80),
+    aes(x = 4.85, y = 83, xend = 1.5, yend = 80),
     color = "#C74B4B",
     curvature = 0.4,
     size = 0.4,

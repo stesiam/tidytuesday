@@ -116,8 +116,8 @@ plot = ggplot(data = wins_by_country_category) +
   theme(
     plot.title = element_markdown(family = "jost", margin = margin(t = 5), color = "white", hjust = 0.5),
     plot.subtitle = element_textbox_simple(family = "jost", margin = margin(t = 5, b = 10),
-                                           color = "white"),
-    plot.caption = element_markdown(family = "caption", color = "white"),
+                                           color = "white", size = 9),
+    plot.caption = element_markdown(family = "caption", color = "white", size = 7, lineheight = 1.2),
     legend.position = "none",
     strip.background = element_rect(fill = "#ccccff", linetype = "blank"),
     strip.text = element_markdown(family = "uc", face = "bold"),

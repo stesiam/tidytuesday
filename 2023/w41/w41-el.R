@@ -68,7 +68,7 @@ d$cat = factor(d$cat, c("Πολύ Υψηλή", "Υψηλή", "Μέτρια", "Χ
 ## Plot texts
 
 title = glue("<b><span style='font-family:fs; color:  white;'  >&#xf6e2; </span> Στοιχιωμένες Πολιτείες των ΗΠΑ<span style='font-family:fs; color:  white;'  > &#xf6e2;</span></b>")
-subtitle = glue("Συνολικά, στις ΗΠΑ έχουν αναφερθεί <b>{nrow(haunted_places)}</b> στοιχειωμένα μέρη <br>
+subtitle = glue("Συνολικά, στις ΗΠΑ έχουν αναφερθεί <b>{nrow(haunted_places)}</b> στοιχειωμένα μέρη.<br>
                       Μεγάλυτερη συγκέντρωση αυτών παρατηρείται <br> στη πρωτεύουσα των ΗΠΑ, **<span style = 'color:red;'>Washington DC</span>** και στις πολιτείες <br>**<span style = 'color:orange;'>Rhode Island</span>**
                       και της **<span style = 'color:orange;'>Μασαχουσέτης</span>**.")
 caption = "<b>Σημείωση: Με βάση τη πυκνότητα των στοιχειωμένων τοποθεσιών ανά 1000 τετραγωνικά χλμ</b><br>Tidy Tuesday, week 41<br><span style='font-family:fb;'  >&#xf09b;</span> <b>stesiam</b>, 2023"

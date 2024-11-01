@@ -133,8 +133,10 @@ plot = ggplot(data = wins_by_country_category) +
   theme_classic(base_size = 10) +
   theme(
     plot.title = element_markdown(family = "rbc", margin = margin(t = 5), hjust = 0.5, color = "white"),
-    plot.subtitle = element_textbox_simple(family = "ap", margin = margin(t = 5, b = 10), color = "white"),
-    plot.caption = element_markdown(family = "rbc", color = "white", lineheight = 1.2),
+    plot.subtitle = element_textbox_simple(family = "ap", margin = margin(t = 5, b = 10), color = "white",
+                                           size = 9),
+    plot.caption = element_markdown(family = "rbc", color = "white", lineheight = 1.2,
+                                    size = 7),
     legend.position = "none",
     strip.background = element_rect(fill = "#ccccff", linetype = "blank"),
     strip.text = element_markdown(family = "uc", face = "bold"),

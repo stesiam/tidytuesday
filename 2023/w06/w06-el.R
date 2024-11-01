@@ -56,7 +56,7 @@ clean_data = merged_dataset |>
 
 ## Plot texts
 
-title = glue("Τιμές μετοχών των <br> <span style='color:#4285f4;'>Google</span> και <span style='color:#ff9900;'>Amazon</span><br> σε $ δολλάρια ΗΠΑ")
+title = glue("Τιμές μετοχών των <br> <span style='color:#4285f4;'>Google</span> και <span style='color:#ff9900;'>Amazon</span><br> σε $ δολάρια ΗΠΑ")
 subtitle = glue("Σύγκριση των προσαρμοσμένων τιμών κλεισίματος <br>των μετοχών της Google (GOOGL) και της<br> Amazon (AMZN) μεταξύ των ετών 2010 <br> και 2022.")
 caption = glue("<span style = 'font-family:fs; color:#ffffff;'>&#xf1c0; </span> <b>Πηγή:</b> Yahoo Finance | Tidy Tuesday, week 6<br> <span style = 'font-family:fs; color:#ffffff;'>&#xe473; </span> <b>Γράφημα:</b><span style='font-family:fb;'> &#xf09b; </span><b>stesiam</b>, 2023")
 
