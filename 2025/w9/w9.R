@@ -126,7 +126,8 @@ final_plot = ggplot(fg, aes(x=x, id = id,
                                   color = "white", margin = margin(t = 10, b = 10), size = 18),
     plot.subtitle = element_textbox_simple(family = "js", color = "white", margin = margin(b = 5, l = 20, r = 20)),
     plot.title.position = "plot",
-    plot.caption = element_markdown(family = "js", lineheight = 1.4, colour = "gray", hjust = 0.5),
+    plot.caption = element_markdown(family = "js", lineheight = 1.4, colour = "gray", hjust = 0.5,
+                                    margin = margin(b = 5)),
     plot.background = element_rect(fill = "black"),
     legend.position = "none"
   )

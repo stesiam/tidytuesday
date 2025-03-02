@@ -22,8 +22,8 @@ sysfonts::font_add_google("Ubuntu Condensed", "uc")
 sysfonts::font_add_google("EB Garamond", "eb")
 
 
-sysfonts::font_add_google("Gentium Plus", "gp")
-sysfonts::font_add('gp',"/home/stelios/Downloads/Gentium_Plus/GentiumPlus-Regular.ttf")
+sysfonts::font_add_google("GFS Neohellenic", "gn")
+#sysfonts::font_add('gp',"/home/stelios/Downloads/Gentium_Plus/GentiumPlus-Regular.ttf")
 
 sysfonts::font_add('fb', '/home/stelios/Downloads/fontawesome-free-6.7.2-desktop/otfs/Font Awesome 6 Brands-Regular-400.otf')
 sysfonts::font_add('fs', '/home/stelios/Downloads/fontawesome-free-6.7.2-desktop/otfs/Font Awesome 6 Free-Solid-900.otf')
@@ -90,7 +90,7 @@ fg <- fg %>%
   mutate(y = str_wrap(y, width = 10)) 
 
 
-title_text = glue("<span style='font-family:gp;'>Δεδομένα διάσωσης ζώων</span>")
+title_text = glue("<span style='font-family:gn;'>Δεδομένα διάσωσης ζώων</span>")
 subtitle_text = marquee::marquee_glue("Το καταφύγιο ζώων της πόλης Long Beach (στην πολιτεία της Καλιφόρνια) έχει φροντίσει πάνω από <b>29,500</b> ζώα,
                       τα τελευταία οκτώ χρόνια (2017 - 2024). Το ποσοστό αυτών που κατάφεραν να <b><span style='color: #377eb8;'>επανέλθουν</span></b> στο φυσιολογικό προσεγγίζει το <b><span style='color: #377eb8;'>80%</span></b> (ενώ το υπόλοιπο <b><span style='color: #E41A1C;'>20% δεν άντεξε</span></b>).
                       Τα μισά από τα ζώα που έρχονται σε κακή κατάσταση, με τη βοήθεια του καταφυγίου, έχουν καταφέρει να επιζήσουν.")
@@ -122,12 +122,13 @@ final_plot = ggplot(fg, aes(x=x, id = id,
   theme(
     axis.text.x = element_blank(),
     axis.title.x = element_blank(),
-    plot.title = element_markdown(family = "gp", 
+    plot.title = element_markdown(family = "gn", 
                                   hjust = 0.5, face = "bold", 
                                   color = "white", margin = margin(t = 10, b = 10), size = 18),
-    plot.subtitle = element_textbox_simple(family = "gp", color = "white", margin = margin(b = 5, l = 20, r = 20)),
+    plot.subtitle = element_textbox_simple(family = "gn", color = "white", margin = margin(b = 5, l = 20, r = 20)),
     plot.title.position = "plot",
-    plot.caption = element_markdown(family = "eb", lineheight = 1.4, colour = "gray", hjust = 0.5),
+    plot.caption = element_markdown(family = "eb", lineheight = 1.4, colour = "gray", hjust = 0.5,
+                                    margin = margin(b = 5)),
     plot.background = element_rect(fill = "black"),
     legend.position = "none"
   )
