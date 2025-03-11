@@ -79,3 +79,9 @@ Selected visualizations based on [Tidy Tuesday's](https://github.com/rfordatasci
 **Source:** -- <br>
 <img src="https://github.com/stesiam/tidytuesday/blob/main/2024/w20/w20-2024-tt.png?raw=true" width="500"> 
 
+### **12. Animal Shelter**
+
+**Date:** `Week 9, 2025` <br>
+**Geometry:** *geom_parallel_sets* from ggforce br>
+**Source:** Long Island Animal Shelter & {animalshelter} R package <br>
+<img src="https://github.com/stesiam/tidytuesday/blob/main/2024/w20/w9-2025-tt.png?raw=true" width="500"> 
