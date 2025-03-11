@@ -94,7 +94,7 @@ title_text = glue("<span style='font-family:gn;'>Δεδομένα διάσωση
 subtitle_text = marquee::marquee_glue("Το καταφύγιο ζώων της πόλης Long Beach (στην πολιτεία της Καλιφόρνια) έχει φροντίσει πάνω από <b>29,500</b> ζώα,
                       τα τελευταία οκτώ χρόνια (2017 - 2024). Το ποσοστό αυτών που κατάφεραν να <b><span style='color: #377eb8;'>επανέλθουν</span></b> στο φυσιολογικό προσεγγίζει το <b><span style='color: #377eb8;'>80%</span></b> (ενώ το υπόλοιπο <b><span style='color: #E41A1C;'>20% δεν άντεξε</span></b>).
                       Τα μισά από τα ζώα που έρχονται σε κακή κατάσταση, με τη βοήθεια του καταφυγίου, έχουν καταφέρει να επιζήσουν.")
-caption_text = " Tidy Tuesday, εβδομάδα 9, 2025<br><b>Πηγή:</b> City of Long Island Animal Rescue<br><b>Γράφημα:</b> <span style='font-family:fb;'  >&#xf09b;</span><b> stesiam</b>, 2025"
+caption_text = " Tidy Tuesday, εβδομάδα 9, 2025<br><b>Πηγή:</b> City of Long Island Animal Rescue & πακέτο {animalshelter}<br><b>Γράφημα:</b> <span style='font-family:fb;'  >&#xf09b;</span><b> stesiam</b>, 2025"
 
 # bg_gradient <- grid::linearGradient(colours = rev(MetBrewer::met.brewer("")[6:8]))
 

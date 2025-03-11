@@ -93,7 +93,7 @@ title_text = glue("<span style='font-family:js;'>Data on Rescuing Animals</span>
 subtitle_text = marquee::marquee_glue("The animal shelter of City of Long Island has cared approximately, <b>29,500</b> animals,
                       the last 8 years (2017-2024). The percentage of <b><span style='color: #377eb8;'>recovered</span></b> animals is close to <b><span style='color: #377eb8;'>80%</span></b>.
                       Half of the animals that come to the shelter in bad condition have been saved.")
-caption_text = " Tidy Tuesday, week 9, 2025<br><b>SOURCE:</b> City of Long Island Animal Rescue<br><b>VISUALIZATION:</b> <span style='font-family:fb;'  >&#xf09b;</span><b> stesiam</b>, 2025"
+caption_text = " Tidy Tuesday, week 9, 2025<br><b>SOURCE:</b> City of Long Island Animal Rescue (via <span style='font-family:fb;'>&#xf4f7;</span> {animalshelter})<br><b>VISUALIZATION:</b> <span style='font-family:fb;'  >&#xf09b;</span><b> stesiam</b>, 2025"
 
 # bg_gradient <- grid::linearGradient(colours = rev(MetBrewer::met.brewer("")[6:8]))
 
